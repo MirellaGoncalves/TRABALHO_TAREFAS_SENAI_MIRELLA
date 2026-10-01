@@ -3,31 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Painel de Tarefas</title>
+    <title>Minhas Tarefas</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="cartao-aplicacao">
-        <header class="cabecario-aplicacao">
-            <h1>Minhas Tarefas</h1>
-            <button id="botao-adicionar" class="botao-principal">
-             <i class="fa-solid fa-moon"></i>
+    <main class="pagina">
+        <header class="topo">
+            <div class="criador">
+                <div class="avatar">
+                    <img src="Creaded by Mirella.png" alt="Foto de Mirella">
+            </div>
+                <span>Created by: Mirella</span>
+            </div>
+            <button class="menu">
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
-            
         </header>
-        <div class="caixa-entrada">
-            <input type="text" id="campo-tarefa" placeholder="O que vamos fazer hoje?..." maxlength="40">
-            <button id="botao-adicionar" class="botao-principal">
-                <i class="fa-solid fa-plus"></i>Adicionar</button>
-        </div>
-        <ul id="lista-tarefas" class="lista-tarefas">
-            <!-- As tarefas serão inseridas aqui dinamicamente via JS -->
-        </ul>
-        <footer class="rodape-plicacao">
-            <span id="contador-tarefas">0 tarefas na Lista</span>
-        </footer>
-    </div>
+
+        <section class="conteudo">
+            <h1 class="titulo">
+                <span class="minhas">Minhas</span>
+                <span class="tarefas">Tarefas</span>
+            </h1>
+
+            <div class="caixa-entrada">
+                <input type="text" id="campo-tarefa" placeholder="O que vamos fazer?" maxlength="40">
+                <button id="botao-adicionar" class="botao-adicionar">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </div>
+
+            <ul id="lista-tarefas" class="lista-tarefas"></ul>
+
+            <footer class="rodape-aplicacao">
+                <span id="contador-tarefas">0 tarefas na Lista</span>
+            </footer>
+        </section>
+
+        <button id="botao-tema" class="botao-tema">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+    </main>
 
     <script src="script.js"></script>
 </body>

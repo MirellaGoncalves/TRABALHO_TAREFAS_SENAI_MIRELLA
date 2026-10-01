@@ -1,15 +1,12 @@
 const campoTarefa = document.getElementById('campo-tarefa');
-const botaoAdicionar = document.querySelector('.caixa-entrada .botao-principal');
+const botaoAdicionar = document.getElementById('botao-adicionar');
 const listaTarefas = document.getElementById('lista-tarefas');
 const contadorTarefas = document.getElementById('contador-tarefas');
-const botaoTema = document.querySelector('.cabecario-aplicacao .botao-principal');
-
-if (botaoTema) {
-    botaoTema.className = 'botao-icone';
-}
+const botaoTema = document.getElementById('botao-tema');
 
 function atualizarContador() {
     const totalTarefas = listaTarefas.children.length;
+
     if (totalTarefas === 0) {
         contadorTarefas.textContent = '0 tarefas na Lista';
     } else if (totalTarefas === 1) {
@@ -32,17 +29,23 @@ function adicionarTarefa() {
     itemLista.innerHTML = `
         <span>${textoTarefa}</span>
         <div class="acoes-tarefa">
-            <button class="botao-acao concluir"><i class="fa-solid fa-check"></i></button>
-            <button class="botao-acao excluir"><i class="fa-solid fa-trash"></i></button>
+            <button class="botao-acao concluir">
+                <i class="fa-solid fa-check"></i>
+            </button>
+            <button class="botao-acao excluir">
+                <i class="fa-solid fa-trash"></i>
+            </button>
         </div>
     `;
 
     const botaoConcluir = itemLista.querySelector('.concluir');
+
     botaoConcluir.addEventListener('click', () => {
         itemLista.classList.toggle('item-tarefa-concluida');
     });
 
     const botaoExcluir = itemLista.querySelector('.excluir');
+
     botaoExcluir.addEventListener('click', () => {
         itemLista.remove();
         atualizarContador();
@@ -52,12 +55,11 @@ function adicionarTarefa() {
 
     campoTarefa.value = '';
     campoTarefa.focus();
+
     atualizarContador();
 }
 
-if (botaoAdicionar) {
-    botaoAdicionar.addEventListener('click', adicionarTarefa);
-}
+botaoAdicionar.addEventListener('click', adicionarTarefa);
 
 campoTarefa.addEventListener('keypress', (evento) => {
     if (evento.key === 'Enter') {
@@ -65,14 +67,14 @@ campoTarefa.addEventListener('keypress', (evento) => {
     }
 });
 
-if (botaoTema) {
-    botaoTema.addEventListener('click', () => {
-        document.body.classList.toggle('modo-escuro');
-        const icone = botaoTema.querySelector('i');
-        if (document.body.classList.contains('modo-escuro')) {
-            icone.className = 'fa-solid fa-sun';
-        } else {
-            icone.className = 'fa-solid fa-moon';
-        }
-    });
-}
+botaoTema.addEventListener('click', () => {
+    document.body.classList.toggle('modo-escuro');
+
+    const icone = botaoTema.querySelector('i');
+
+    if (document.body.classList.contains('modo-escuro')) {
+        icone.className = 'fa-solid fa-sun';
+    } else {
+        icone.className = 'fa-solid fa-moon';
+    }
+});

@@ -1,156 +1,401 @@
-/* Váriaveis para facilitade de temas (limpo e Tons Pastéis)*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
-:root{
-    --gradiente-fundo: linear-gradient(135deg, #a8edea 0%,#fed6e3 100%);
-    --fundo-cartao:#fff;
-    --cor-texto: #2f3748;
-    --cor-primaria: #6c5ce7;
-    --cor-primaria-destaque: #5b4bc4;
-    --cor-borda: #edf2f7;
-    --cor-perigo: #ff7675;
-    --cor-concluido: #a0aec0;
+:root {
+    --fundo: radial-gradient(circle at 50% 45%, #f5dca7 0%, #d9a6a0 25%, #a96f86 48%, #76216f 75%, #53075d 100%);
+    --texto: #ffffff;
+    --texto-suave: rgba(255,255,255,0.72);
+    --roxo: #57005f;
+    --roxo-claro: #6d0874;
+    --fundo-tarefa: rgba(255,255,255,0.22);
+    --borda-tarefa: rgba(255,255,255,0.25);
 }
 
-/* modo escuro */
-body.modo-escuro{
-    --gradiente-fundo:linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-    --fundo-cartao:#1a202c;
-    --cor-texto: #f7fafc;
-    --cor-borda: #4a5568;
+body.modo-escuro {
+    --fundo: radial-gradient(circle at 50% 45%, #55445a 0%, #32263a 35%, #1d1425 70%, #100b17 100%);
+    --texto: #ffffff;
+    --texto-suave: rgba(255,255,255,0.65);
+    --fundo-tarefa: rgba(255,255,255,0.10);
+    --borda-tarefa: rgba(255,255,255,0.15);
 }
 
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background 0.3s, color 0.3s;
+    font-family: 'DM Sans', sans-serif;
 }
 
-body{
-    background: var(--gradiente-fundo);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.cartao-aplicacao{
-    background: var(--fundo-cartao);
-    color: var(--cor-texto);
+html,
+body {
     width: 100%;
-    max-width: 420px;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    min-height: 100%;
 }
 
-.cabecalho-aplicacao{
+body {
+    min-height: 100vh;
+    background: var(--fundo);
+    color: var(--texto);
+    overflow-x: hidden;
+    transition: background 0.5s ease, color 0.3s ease;
+}
+
+.pagina {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 32px 34px;
+}
+
+.topo {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
 }
 
-.cabecalho-aplicacao h1{
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.botao-icone{
-    background: transparent;
-    border: none;
-    font-size: 1.2rem;
-    color: var(--cor-texto);
-    cursor: pointer;
-}
-
-.caixa-entrada{
+.criador {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    align-items: center;
+    gap: 13px;
 }
 
 
-input[type="text"]{
-    flex:1;
-    padding: 12px 15px;
-    border: 2px solid var(--cor-borda);
-    border-radius: 12px;
-    outline: none;
-    font-size: 0.95rem;
-    background: transparent;
-    color: var(--cor-texto);
+.avatar {
+    width: 66px;
+    height: 66px;
+    min-width: 66px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.35);
+    box-shadow: 0 5px 20px rgba(50,0,50,0.20);
 }
 
-input[type="text"]:focus{
-    border-color: var(--cor-primaria);
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
-.botao-principal{
-    background-color: var(--cor-primaria);
+.criador span {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -1px;
     color: white;
+}
+
+.menu {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    background: transparent;
     border: none;
-    padding: 12px 18px;
-    border-radius: 12px;
-    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.1s, background 0.2s;
+    padding: 5px;
 }
 
-.botao-principal:hover{
-    background: var(--cor-primaria-destaque);
-    transform: translateY(-2px);
+.menu span {
+    width: 50px;
+    height: 5px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.85);
 }
 
-.lista-tarefas{
+.conteudo {
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.titulo {
+    position: relative;
+    width: 100%;
+    max-width: 1050px;
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 0.8;
+    white-space: nowrap;
+}
+
+.minhas {
+    position: relative;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(130px, 16vw, 250px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.72);
+    z-index: 1;
+}
+
+.tarefas {
+    position: relative;
+    margin-left: 25px;
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(90px, 12vw, 180px);
+    font-weight: 400;
+    color: rgba(255,255,255,0.78);
+    z-index: 2;
+}
+
+.caixa-entrada {
+    width: min(620px, 90%);
+    height: 95px;
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.95);
+    border-radius: 60px;
+    padding: 10px 15px 10px 32px;
+    box-shadow: 0 15px 35px rgba(70,0,60,0.18);
+    position: relative;
+    z-index: 5;
+}
+
+input[type="text"] {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #555;
+    font-size: 21px;
+    font-weight: 600;
+}
+
+input[type="text"]::placeholder {
+    color: #d4d4d4;
+    opacity: 1;
+}
+
+.botao-adicionar {
+    width: 74px;
+    height: 74px;
+    min-width: 74px;
+    border-radius: 50%;
+    border: none;
+    background: var(--roxo);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.botao-adicionar:hover {
+    background: var(--roxo-claro);
+    transform: scale(1.06);
+}
+
+.botao-adicionar:active {
+    transform: scale(0.96);
+}
+
+.lista-tarefas {
+    width: min(620px, 90%);
     list-style: none;
+    margin-top: 25px;
     max-height: 280px;
     overflow-y: auto;
+    position: relative;
+    z-index: 5;
 }
 
-.item-tarefa{
+.item-tarefa {
+    width: 100%;
+    min-height: 62px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px;
-    background: var(--cor-borda);
-    border-radius: 10px;
+    gap: 15px;
+    padding: 12px 18px;
     margin-bottom: 10px;
-    animation: aparecer 0.3s esse;
+    border-radius: 18px;
+    background: var(--fundo-tarefa);
+    border: 1px solid var(--borda-tarefa);
+    backdrop-filter: blur(10px);
+    color: white;
+    animation: aparecer 0.3s ease;
 }
 
-.item-tarefa-concluida span{
+.item-tarefa > span {
+    font-size: 17px;
+    word-break: break-word;
+}
+
+.item-tarefa-concluida span {
     text-decoration: line-through;
-    color: var(--cor-concluido);
+    color: rgba(255,255,255,0.5);
 }
 
-.acoes-tarefa{
+.acoes-tarefa {
     display: flex;
-    gap: 8px;
+    gap: 10px;
+    flex-shrink: 0;
 }
 
-.botao-acao{
-    background: none;
+.botao-acao {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
     border: none;
+    background: rgba(255,255,255,0.18);
+    color: white;
     cursor: pointer;
-    font-size: 1rem;
-    color: var(--cor-texto);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.botao-acao.excluir:hover{
-    color: var(--cor-perigo);
+.botao-acao:hover {
+    transform: scale(1.08);
+    background: rgba(255,255,255,0.30);
 }
 
-.rodape-aplicacao{
+.botao-acao.excluir:hover {
+    background: rgba(255,80,100,0.55);
+}
+
+.rodape-aplicacao {
     margin-top: 15px;
-    font-size: 0.85rem;
-    color: var(--cor-concluido);
+    color: var(--texto-suave);
+    font-size: 14px;
     text-align: center;
 }
 
-@keyframes aparecer{
-    from{ opacity: 0; transform: translateY(10px);}
-    to{ opacity: 1; transform: translateY(0);}
+.botao-tema {
+    position: fixed;
+    left: 15px;
+    bottom: 10px;
+    width: 51px;
+    height: 51px;
+    border-radius: 50%;
+    border: 5px solid rgba(255,255,255,0.75);
+    background: transparent;
+    color: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 27px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.botao-tema:hover {
+    transform: scale(1.08);
+    background: rgba(255,255,255,0.08);
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lista-tarefas::-webkit-scrollbar {
+    width: 5px;
+}
+
+.lista-tarefas::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.lista-tarefas::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+    .pagina {
+        padding: 25px 18px;
+    }
+
+    .avatar {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .criador span {
+        font-size: 19px;
+    }
+
+    .menu {
+        width: 40px;
+    }
+
+    .menu span {
+        width: 40px;
+        height: 4px;
+    }
+
+    .titulo {
+        margin-bottom: 20px;
+    }
+
+    .minhas {
+        font-size: 110px;
+    }
+
+    .tarefas {
+        font-size: 80px;
+        margin-left: -25px;
+    }
+
+    .caixa-entrada {
+        height: 75px;
+        padding-left: 22px;
+    }
+
+    input[type="text"] {
+        font-size: 16px;
+    }
+
+    .botao-adicionar {
+        width: 57px;
+        height: 57px;
+        min-width: 57px;
+        font-size: 27px;
+    }
+}
+
+@media (max-width: 450px) {
+    .criador span {
+        font-size: 16px;
+    }
+
+    .avatar {
+        width: 43px;
+        height: 43px;
+    }
+
+    .titulo {
+        transform: scale(0.85);
+    }
+
+    .minhas {
+        font-size: 100px;
+    }
+
+    .tarefas {
+        font-size: 70px;
+    }
+
+    .caixa-entrada {
+        width: 95%;
+    }
 }
