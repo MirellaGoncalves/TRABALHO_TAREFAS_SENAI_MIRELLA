@@ -1,53 +1,126 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minhas Tarefas</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minhas Tarefas</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <main class="pagina">
-        <header class="topo">
-            <div class="criador">
-                <div class="avatar">
-                    <img src="Creaded by Mirella.png" alt="Foto de Mirella">
-            </div>
-                <span>Created by: Mirella</span>
-            </div>
-            <button class="menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </header>
-
-        <section class="conteudo">
-            <h1 class="titulo">
-                <span class="minhas">Minhas</span>
-                <span class="tarefas">Tarefas</span>
-            </h1>
-
-            <div class="caixa-entrada">
-                <input type="text" id="campo-tarefa" placeholder="O que vamos fazer?" maxlength="40">
-                <button id="botao-adicionar" class="botao-adicionar">
-                    <i class="fa-solid fa-plus"></i>
-                </button>
-            </div>
-
-            <ul id="lista-tarefas" class="lista-tarefas"></ul>
-
-            <footer class="rodape-aplicacao">
-                <span id="contador-tarefas">0 tarefas na Lista</span>
-            </footer>
-        </section>
-
-        <button id="botao-tema" class="botao-tema">
-            <i class="fa-solid fa-moon"></i>
-        </button>
-    </main>
-
-    <script src="script.js"></script>
+<main class="pagina">
+<section id="pagina-inicial" class="tela ativa">
+<header class="topo">
+<div class="criador">
+<div class="avatar">
+<img src="Creaded by Mirella.png" alt="Foto de Mirella">
+</div>
+<span>Created by: Mirella</span>
+</div>
+<button class="menu" id="botao-menu">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</header>
+<div class="conteudo">
+<h1 class="titulo">
+<span class="minhas">Minhas</span>
+<span class="tarefas">Tarefas</span>
+</h1>
+<div class="caixa-entrada">
+<input type="text" id="campo-tarefa" placeholder="O que vamos fazer?" maxlength="40">
+<button id="botao-adicionar" class="botao-adicionar">
+<i class="fa-solid fa-plus"></i>
+</button>
+</div>
+<ul id="lista-tarefas" class="lista-tarefas"></ul>
+<footer class="rodape-aplicacao">
+<span id="contador-tarefas">0 tarefas na Lista</span>
+</footer>
+</div>
+</section>
+<section id="menu-lateral" class="menu-lateral">
+<div class="menu-conteudo">
+<button id="botao-fechar-menu" class="fechar-menu">
+<i class="fa-solid fa-xmark"></i>
+</button>
+<button id="abrir-perfil" class="item-menu">PERFIL</button>
+<button id="abrir-datas" class="item-menu">DATAS</button>
+</div>
+</section>
+<section id="tela-login" class="tela">
+<div class="login-conteudo">
+<h1>Seja Bem-Vindo</h1>
+<div class="login-caixa">
+<label for="nome-login">Seu nome:</label>
+<input type="text" id="nome-login" placeholder="Digite aqui">
+<label for="senha-login">Senha:</label>
+<input type="password" id="senha-login" placeholder="Digite aqui">
+<button id="botao-login">Entrar</button>
+<p id="mensagem-login"></p>
+</div>
+</div>
+</section>
+<section id="tela-perfil" class="tela">
+<div class="perfil-painel">
+<div class="usuario-topo">
+<i class="fa-solid fa-user"></i>
+<span id="nome-perfil">Nome</span>
+</div>
+<div class="perfil-colunas">
+<div class="caixa-perfil">
+<h2>PENDENTES:</h2>
+<div id="tarefas-pendentes"></div>
+</div>
+<div class="caixa-perfil">
+<h2>CONCLUÍDAS:</h2>
+<div id="tarefas-concluidas"></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tela-login-datas" class="tela">
+<div class="login-conteudo">
+<h1>Seja Bem-Vindo</h1>
+<div class="login-caixa">
+<label for="nome-login-datas">Seu nome:</label>
+<input type="text" id="nome-login-datas" placeholder="Digite aqui">
+<label for="senha-login-datas">Senha:</label>
+<input type="password" id="senha-login-datas" placeholder="Digite aqui">
+<button id="botao-login-datas">Entrar</button>
+<p id="mensagem-login-datas"></p>
+</div>
+</div>
+</section>
+<section id="tela-datas" class="tela">
+<div class="datas-painel">
+<div class="usuario-topo">
+<i class="fa-solid fa-user"></i>
+<span id="nome-datas">Nome</span>
+</div>
+<h1 class="titulo-datas">Eventos</h1>
+<div class="entrada-evento">
+<input type="text" id="campo-evento" placeholder="qual é a programação?" maxlength="60">
+<input type="date" id="campo-data">
+<button id="botao-evento" class="botao-adicionar">
+<i class="fa-solid fa-plus"></i>
+</button>
+</div>
+<p id="mensagem-evento"></p>
+<div id="lista-eventos" class="lista-eventos"></div>
+</div>
+</section>
+<button id="botao-tema" class="botao-tema">
+<i class="fa-solid fa-moon"></i>
+</button>
+</main>
+<script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+
