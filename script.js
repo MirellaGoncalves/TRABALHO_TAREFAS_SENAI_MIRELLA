@@ -1,5 +1,33 @@
 
-const campoTarefa=document.getElementById('campo-tarefa');
+const botaoNovidades = document.getElementById('botao-novidades');
+
+if (botaoNovidades) {
+    botaoNovidades.addEventListener('click', function() {
+        alert(`NOVIDADES DO APLICATIVO
+
+• Sistema de Perfil
+• Sistema de Login
+• Login salvo no navegador
+• Nome do usuário salvo
+• Navegação entre as telas
+• Tela de Datas
+• Cadastro de eventos
+• Eventos com data
+• Eventos salvos no navegador
+• Eventos exibidos no Perfil
+• Exclusão de eventos
+• Histórico de tarefas
+• Tarefas concluídas
+• Tarefas excluídas
+• Contador de tarefas
+• Botão de modo escuro
+• Ícone do modo escuro muda entre lua e sol
+• Botão de menu
+• Navegação pelo botão voltar do navegador
+• Dados preservados ao trocar de tela
+• Dados preservados ao atualizar a página`);
+    });
+}const campoTarefa=document.getElementById('campo-tarefa');
 const botaoAdicionar=document.getElementById('botao-adicionar');
 const listaTarefas=document.getElementById('lista-tarefas');
 const contadorTarefas=document.getElementById('contador-tarefas');
