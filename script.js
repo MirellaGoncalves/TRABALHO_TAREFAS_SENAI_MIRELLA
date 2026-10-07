@@ -1,10 +1,32 @@
-
-const botaoNovidades = document.getElementById('botao-novidades');
-
-if (botaoNovidades) {
-    botaoNovidades.addEventListener('click', function() {
-        alert(`NOVIDADES DO APLICATIVO
-
+const CHAVE_STORAGE='minhasTarefasDados';
+let dados={nome:'',senha:'',tarefas:[],eventos:[]};
+function salvarDados(){
+try{
+localStorage.setItem(CHAVE_STORAGE,JSON.stringify(dados));
+}catch(erro){
+console.error('Erro ao salvar os dados:',erro);
+}
+}
+function carregarDados(){
+const dadosSalvos=localStorage.getItem(CHAVE_STORAGE);
+if(!dadosSalvos)return;
+try{
+const dadosCarregados=JSON.parse(dadosSalvos);
+dados={
+nome:dadosCarregados.nome||'',
+senha:dadosCarregados.senha||'',
+tarefas:Array.isArray(dadosCarregados.tarefas)?dadosCarregados.tarefas:[],
+eventos:Array.isArray(dadosCarregados.eventos)?dadosCarregados.eventos:[]
+};
+}catch(erro){
+console.error('Erro ao carregar os dados:',erro);
+dados={nome:'',senha:'',tarefas:[],eventos:[]};
+}
+}
+const botaoNovidades=document.getElementById('botao-novidades');
+if(botaoNovidades){
+botaoNovidades.addEventListener('click',function(){
+alert(`NOVIDADES DO APLICATIVO
 • Sistema de Perfil
 • Sistema de Login
 • Login salvo no navegador
@@ -25,20 +47,15 @@ if (botaoNovidades) {
 • Botão de menu
 • Navegação pelo botão voltar do navegador
 • Dados preservados ao trocar de tela
-• Dados preservados ao atualizar a página`);
-    });
-}const campoTarefa=document.getElementById('campo-tarefa');
+• Dados preservados ao atualizar a página
+• Dados salvos depois de fechar e abrir o navegador`);
+});
+}
+const campoTarefa=document.getElementById('campo-tarefa');
 const botaoAdicionar=document.getElementById('botao-adicionar');
 const listaTarefas=document.getElementById('lista-tarefas');
 const contadorTarefas=document.getElementById('contador-tarefas');
 const botaoTema=document.getElementById('botao-tema');
-const dadosSalvos=localStorage.getItem('minhasTarefasDados');
-let dados=dadosSalvos?JSON.parse(dadosSalvos):{nome:'',senha:'',tarefas:[],eventos:[]};
-if(!dados.tarefas)dados.tarefas=[];
-if(!dados.eventos)dados.eventos=[];
-function salvarDados(){
-localStorage.setItem('minhasTarefasDados',JSON.stringify(dados));
-}
 function atualizarContador(){
 if(!contadorTarefas)return;
 const total=dados.tarefas.filter(t=>!t.excluida).length;
@@ -386,7 +403,7 @@ return;
 }
 mostrarTela(telaInicial);
 });
-salvarDados();
+carregarDados();
 mostrarTarefas();
 mostrarPerfil();
 mostrarEventos();
